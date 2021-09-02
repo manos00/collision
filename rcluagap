@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+GAP="$(grep gap $HOME/.config/awesome/rc.lua | awk -F"= " '{print $2}')"
+echo $GAP
