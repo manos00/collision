@@ -20,8 +20,8 @@ local placement    = require( "awful.placement")
 local module = {}
 local wiboxes,delta = nil,100
 local edge = nil
---local gapcmd = "grep gap $HOME/awesome/rc.lua | awk -F'= ' '{print $2}'"
-local gapcmd = io.popen("rcluagap")
+local cwd = debug.getinfo(1).source:match("@?(.*/)")
+local gapcmd = io.popen(cwd.."/rcluagap")
 local gapstr = gapcmd:read("*a")
 local gap = tonumber(gapstr)*2
 
