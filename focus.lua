@@ -20,6 +20,11 @@ local placement    = require( "awful.placement")
 local module = {}
 local wiboxes,delta = nil,100
 local edge = nil
+--local gapcmd = "grep gap $HOME/awesome/rc.lua | awk -F'= ' '{print $2}'"
+local gapcmd = io.popen("rcluagap")
+local gapstr = gapcmd:read("*a")
+local gap = tonumber(gapstr)*2
+
 
 ---------------- Visual -----------------------
 local function init()
@@ -106,8 +111,8 @@ local function float_move(dir,c)
 end
 
 local function float_move_max(dir,c)
-  return ({left={x=capi.screen[c.screen].workarea.x},right={x=capi.screen[c.screen].workarea.width+capi.screen[c.screen].workarea.x-c:geometry().width}
-      ,up={y=capi.screen[c.screen].workarea.y},down={y=capi.screen[c.screen].workarea.y+capi.screen[c.screen].workarea.height-c:geometry().height}})[dir]
+  return ({left={x=capi.screen[c.screen].workarea.x+gap},right={x=capi.screen[c.screen].workarea.width+capi.screen[c.screen].workarea.x-c:geometry().width-gap}
+      ,up={y=capi.screen[c.screen].workarea.y+gap},down={y=capi.screen[c.screen].workarea.y+capi.screen[c.screen].workarea.height-c:geometry().height-gap}})[dir]
 end
 
 local function floating_clients()
