@@ -1,4 +1,22 @@
 #!/bin/env bash
 
-GAP="$(grep gap $HOME/.config/awesome/rc.lua | awk -F"= " '{print $2}')"
-echo $GAP
+RCLUA="$HOME/.config/awesome/rc.lua"
+
+if [[ -f $RCLUA ]]; then
+	GAP="$(grep gap $RCLUA | awk -F"= " '{print $2}')"
+	if [[ $GAP == "" ]]; then
+		GAP="$(grep gap $RCLUA | awk -F= '{print $2}')"
+		if [[ $GAP == "" ]]; then
+			echo 0
+		else
+			echo $GAP
+			exit 0
+		fi
+	else
+		echo $GAP
+		exit 0
+	fi
+else
+	echo 0
+	exit 1
+fi
