@@ -111,8 +111,8 @@ local function float_move(dir,c)
 end
 
 local function float_move_max(dir,c)
-  return ({left={x=capi.screen[c.screen].workarea.x+gap},right={x=capi.screen[c.screen].workarea.width+capi.screen[c.screen].workarea.x-c:geometry().width-gap}
-      ,up={y=capi.screen[c.screen].workarea.y+gap},down={y=capi.screen[c.screen].workarea.y+capi.screen[c.screen].workarea.height-c:geometry().height-gap}})[dir]
+  return ({left={x=capi.screen[c.screen].workarea.x+gap+1},right={x=capi.screen[c.screen].workarea.width+capi.screen[c.screen].workarea.x-c:geometry().width-gap-3}
+      ,up={y=capi.screen[c.screen].workarea.y+gap},down={y=capi.screen[c.screen].workarea.y+capi.screen[c.screen].workarea.height-c:geometry().height-gap-3}})[dir]
 end
 
 local function floating_clients()
