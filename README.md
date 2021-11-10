@@ -1,3 +1,7 @@
+DISCLAMER:
+This is a fork of Elv13's https://github.com/Elv13/collision!
+I only added support for gaps between windows in awesome.
+
 Collision window navigation module for AwesomeWM
 ================================================
 
